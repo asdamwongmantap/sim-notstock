@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
-use App\Models\Product;
+use App\Http\Requests\StoreStockRequest;
+use App\Http\Requests\UpdateStockRequest;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProductController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,12 @@ class ProductController extends Controller
     public function index()
     {
         //get all product
-        $data_products = \App\Models\Product::all();
-        return view('products/listproducts',['data_product' => $data_products]);
+        // $data_stocks = \App\Models\Stock::all();
+        $data_stocks = DB::table('stocks')
+            ->join('products', 'products.product_id', '=', 'stocks.product_id')
+            ->select('stocks.id','stocks.product_id','products.product_name', 'stocks.qty_available')
+            ->get();
+        return view('stocks/liststocks',['data_stock' => $data_stocks]);
     }
 
     /**
@@ -30,7 +34,7 @@ class ProductController extends Controller
     public function create()
     {
         //add product
-        return view('products/addproduct');
+        return view('stocks/addstock');
     }
 
     /**
@@ -42,28 +46,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //process add product
-        $lastID = \App\Models\Product::create($request->all());
-        $created_atawal = \Carbon\Carbon::now();
-        $updated_atawal = \Carbon\Carbon::now();
-        $created_at = \Carbon\Carbon::parse($created_atawal)->format('d/m/Y');
-        $updated_at = \Carbon\Carbon::parse($updated_atawal)->format('d/m/Y');
-
-        $dd1 = substr($created_at,0,2);
-        $mm1 = substr($created_at,3,2);
-        $yyyy1 = substr($created_at,6,4);
-        $tgl1 = $yyyy1."-".$mm1."-".$dd1;
-
-        $dd2 = substr($updated_at,0,2);
-        $mm2 = substr($updated_at,3,2);
-        $yyyy2 = substr($updated_at,6,4);
-        $tgl2 = $yyyy2."-".$mm2."-".$dd2;
-
-        DB::table('stocks')->insert(
-            ['product_id' => $lastID->product_id,'qty_available' => '1',
-            'created_by'=> $request->created_by,
-            'updated_by'=> $request->updated_by,
-            'created_at'=> $tgl1,'updated_at'=> $tgl2]
-        );
+        \App\Models\Stock::create($request->all());
         return 'berhasil';
     }
 
@@ -76,8 +59,8 @@ class ProductController extends Controller
     public function show($id)
     {
         //get detail product
-        $data_product = \App\Models\Product::find($id);
-        return view('products/detailproduct',['data_product' => $data_product]);
+        $data_stock = \App\Models\Stock::find($id);
+        return view('stocks/detailstock',['data_stock' => $data_stock]);
     }
 
     /**
@@ -89,8 +72,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         //get edit product
-        $data_product = \App\Models\Product::find($id);
-        return view('products/editproduct',['data_product' => $data_product]);
+        $data_stock = \App\Models\Stock::find($id);
+        return view('stocks/editstock',['data_stock' => $data_stock]);
     }
 
     /**
@@ -103,8 +86,8 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //update detail product
-        $data_product = \App\Models\Product::find($id);
-        $data_product->update($request->all());
+        $data_stock = \App\Models\Stock::find($id);
+        $data_stock->update($request->all());
         return 'berhasil';
     }
 
@@ -117,7 +100,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //delete product
-        $product = \App\Models\Product::find($id);
+        $product = \App\Models\Stock::find($id);
         $product->delete();
         return 'berhasil';
     }
