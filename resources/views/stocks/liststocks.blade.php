@@ -22,10 +22,7 @@
                 </div>
                 <div class="x_content" style="height:100%">
                   <input type="hidden" id="userid" value="">
-                  <a href="/addstock" class="btn btn-success" title="Tambah Stock" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
-                  id="tomboltambah"><i class="fa fa-plus"></i> Tambah Stock</a></br>
-                  </br>
-                  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                   <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
                           <th>Product Name</th>
@@ -40,7 +37,7 @@
                           <td>{{$stock->qty_available}}</td>
 						  <td>
                             <a href="/editstock/{{$stock->id}}" class="btn btn-primary">Edit</a>
-                            <a href="/deletestock/{{$stock->id}}" class="btn btn-danger item_deletestock" data-id="{{$stock->id}}">Delete</a></td>
+                         </td>
                         </tr>
                       @endforeach
                       </tbody>
