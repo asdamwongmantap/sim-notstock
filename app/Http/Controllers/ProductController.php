@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Mail\NotifMessageEmail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ProductController extends Controller
 {
@@ -127,6 +129,7 @@ class ProductController extends Controller
         DB::table('products')
               ->where('product_id', $id)
               ->update(['qty' => $request->qty]);
+        Mail::to("as2605dam@gmail.com")->send(new NotifMessageEmail($id,$request->qty));
         return 'berhasil';
     }
 }
