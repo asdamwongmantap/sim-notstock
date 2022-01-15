@@ -23,6 +23,7 @@ Route::get('/',[LoginController::class,'index']);
 Route::post('/ceklogin',[LoginController::class,'ceklogin']);
 Route::post('/saveproduct',[ProductController::class,'store']);
 Route::post('/savestock',[StockController::class,'store']);
+Route::get('/logout',[LoginController::class,'logout']);
 Route::group(['middleware' => 'auth'],function(){
     Route::get('/dashboard',[MainController::class,'index']);
     //product
