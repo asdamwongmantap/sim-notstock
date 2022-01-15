@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StockController;
+use App\Models\Customer;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +39,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/updatestock/{id}',[StockController::class,'update']);
     Route::get('/deletestock/{id}',[StockController::class,'destroy']);
     Route::get('/detailstock/{id}',[StockController::class,'show']);
+    //customer
+    Route::get('/listcustomer',[CustomerController::class,'index']);
+    Route::get('/detailcustomer/{id}',[CustomerController::class,'show']);
 });

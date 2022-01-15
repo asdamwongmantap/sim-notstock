@@ -11,44 +11,33 @@
            <!--marquee-->
 		  @include('template/headerinfo')
 		  <!-- end marquee-->
-		  <!--list stock-->
+		  <!--list customer-->
 			<div class="row">
 			
 			<div class="col-md-12 col-sm-4 col-xs-12">
               <div class="x_panel">
                 <div class="x_title">
-                <h2>List Stock</h2>
+                <h2>List Customer</h2>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content" style="height:100%">
-                  <input type="hidden" id="userid" value="">
-                   <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
+                  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-                          <th>Product Name</th>
-                          <th>Qty</th>
-						  <th>Action</th>
+						  <th>ID</th>
+                          <th>Nama</th>
+                          <th>Email</th>
+						  <th>No.HP</th>
                         </tr>
                       </thead>
                       <tbody id="show_data">
-                      @foreach($data_stock as $stock)
-					  @if ($stock->qty_available <= 2){
-						<tr style="background-color:#fc032c;color:#ffffff;">
-                          <td><a href="/detailstock/{{$stock->id}}" style="color:#ffffff;">{{$stock->product_name}}</a></td>							
-                          <td>{{$stock->qty_available}}</td>
-						  <td>
-                            <a href="/editstock/{{$stock->id}}" class="btn btn-primary">Edit</a>
-                         </td>
+                      @foreach($data_customer as $customer)
+                      <tr style="background-color:#F7F7F7;color:#000000;">
+					  <td><a href="/detailcustomer/{{$customer->customer_id}}">{{$customer->customer_id}}</a></td>
+                          <td>{{$customer->customer_name}}</td>							
+                          <td>{{$customer->customer_email}}</td>
+						  <td>{{$customer->customer_phone}}</td>
                         </tr>
-					  @else
-						<tr style="background-color:#F7F7F7;color:#000000;">
-                          <td><a href="/detailstock/{{$stock->id}}">{{$stock->product_name}}</a></td>							
-                          <td>{{$stock->qty_available}}</td>
-						  <td>
-                            <a href="/editstock/{{$stock->id}}" class="btn btn-primary">Edit</a>
-                         </td>
-                        </tr>
-						@endif
                       @endforeach
                       </tbody>
                     </table>
@@ -59,7 +48,7 @@
 			<!-- end widget -->
 			  		  
             </div>
-			<!--end list stock-->
+			<!--end list customer-->
 			
         </div>
         <!-- /page content -->
@@ -70,8 +59,8 @@
 		});
 		
 		//prosesdelete
-		$(document).on('click','.item_deletestock',function(e) {
-		var id = $(this).data('id');
+		$(document).on('click','.item_deletecustomer',function(e) {
+		var customer_id = $(this).data('id');
 		var title = "Hapus Data";
 		var text = "Apakah anda yakin ingin menghapus data ini ?";
 	
@@ -89,9 +78,9 @@
 			showLoaderOnConfirm: true
 		}, function () {
 			$.ajax({
-				url:"{{url('/deletestock')}}/"+id,
+				url:"{{url('/deletecustomer')}}/"+customer_id,
 				dataType:'text',
-				data : {id:id},
+				data : {customer_id:customer_id},
 				success:function(e){
 					if (e !== "error") {
 					swal({
@@ -100,7 +89,7 @@
 						text: "Data Berhasil Dihapus !",
 						type: "success"
 					},function(){
-						window.location='/liststock';
+						window.location='/listcustomer';
 						});
 					}
 					else{

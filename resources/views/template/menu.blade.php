@@ -31,7 +31,7 @@
                 <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
                 <h3>Master Data</h3>
                 <li><a href="/listuser"><i class="fa fa-users"></i> List Pengguna </a></li>
-                <li><a href="/listdistributor"><i class="fa fa-users"></i> List Distributor </a></li>
+                <li><a href="/listcustomer"><i class="fa fa-user"></i> List Customer </a></li>
                 <h3>Logistik</h3>
                 <li><a href="/listproduct"><i class="fa fa-list"></i> List Barang </a></li>
                 <h3>Transaksi</h3>
@@ -46,6 +46,8 @@
               <ul class="nav side-menu">
                 <h3>General</h3>
                 <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
+                <h3>Master Data</h3>
+                <li><a href="/listcustomer"><i class="fa fa-user"></i> List Customer </a></li>
                 <h3>Logistik</h3>
                 <li><a href="/listproduct"><i class="fa fa-list"></i> List Barang </a></li>
                 <h3>Transaksi</h3>
