@@ -32,7 +32,7 @@
                       </thead>
                       <tbody id="show_data">
                       @foreach($data_stock as $stock)
-					  @if ($stock->qty_available <= 2){
+					  @if ($stock->qty_available <= 2)
 						<tr style="background-color:#fc032c;color:#ffffff;">
                           <td><a href="/detailstock/{{$stock->id}}" style="color:#ffffff;">{{$stock->product_name}}</a></td>							
                           <td>{{$stock->qty_available}}</td>
