@@ -60,6 +60,19 @@
                     	<input type="text" class="form-control col-md-7 col-xs-12" id="product_sku" name="product_sku" aria-describedby="product_sku" value="{{$data_product->product_sku}}">
                     </div>
                   </div>
+				  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qty">Qty </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    	<input type="text" disabled class="form-control col-md-7 col-xs-12" id="qty" name="qty" aria-describedby="qty" value="{{$data_product->qty}}">
+                    </div>
+				  </div>
+				  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="min_qty">Minimal Qty </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    	<input type="text" disabled class="form-control col-md-7 col-xs-12" id="min_qty" name="min_qty" aria-describedby="min_qty" value="{{$data_product->min_qty}}">
+                    </div>
+				  </div>
+
 				 <div class="form-group">
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="updated_by" name="updated_by" aria-describedby="updated_by" value="{{auth()->user()->id}}">
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="product_id" name="product_id" aria-describedby="product_id" value="{{$data_product->product_id}}">

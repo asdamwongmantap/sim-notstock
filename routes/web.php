@@ -33,13 +33,8 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/updateproduct/{id}',[ProductController::class,'update']);
     Route::get('/deleteproduct/{id}',[ProductController::class,'destroy']);
     Route::get('/detailproduct/{id}',[ProductController::class,'show']);
-    //stock
-    Route::get('/liststock',[StockController::class,'index']);
-    Route::get('/addstock',[StockController::class,'create']);
-    Route::get('/editstock/{id}',[StockController::class,'edit']);
-    Route::post('/updatestock/{id}',[StockController::class,'update']);
-    Route::get('/deletestock/{id}',[StockController::class,'destroy']);
-    Route::get('/detailstock/{id}',[StockController::class,'show']);
+    Route::get('/editqtyproduct/{id}',[ProductController::class,'editqty']);
+    Route::post('/updateqtyproduct/{id}',[ProductController::class,'updateqty']);
     //customer
     Route::get('/listcustomer',[CustomerController::class,'index']);
     Route::get('/detailcustomer/{id}',[CustomerController::class,'show']);
