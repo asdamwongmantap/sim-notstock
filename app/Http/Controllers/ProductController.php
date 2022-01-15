@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Mail\NotifMessageEmail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ProductController extends Controller
 {
@@ -43,27 +45,6 @@ class ProductController extends Controller
     {
         //process add product
         $lastID = \App\Models\Product::create($request->all());
-        $created_atawal = \Carbon\Carbon::now();
-        $updated_atawal = \Carbon\Carbon::now();
-        $created_at = \Carbon\Carbon::parse($created_atawal)->format('d/m/Y');
-        $updated_at = \Carbon\Carbon::parse($updated_atawal)->format('d/m/Y');
-
-        $dd1 = substr($created_at,0,2);
-        $mm1 = substr($created_at,3,2);
-        $yyyy1 = substr($created_at,6,4);
-        $tgl1 = $yyyy1."-".$mm1."-".$dd1;
-
-        $dd2 = substr($updated_at,0,2);
-        $mm2 = substr($updated_at,3,2);
-        $yyyy2 = substr($updated_at,6,4);
-        $tgl2 = $yyyy2."-".$mm2."-".$dd2;
-
-        DB::table('stocks')->insert(
-            ['product_id' => $lastID->product_id,'qty_available' => '1',
-            'created_by'=> $request->created_by,
-            'updated_by'=> $request->updated_by,
-            'created_at'=> $tgl1,'updated_at'=> $tgl2]
-        );
         return 'berhasil';
     }
 
@@ -119,6 +100,36 @@ class ProductController extends Controller
         //delete product
         $product = \App\Models\Product::find($id);
         $product->delete();
+        return 'berhasil';
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editqty($id)
+    {
+        //get edit product
+        $data_stock = \App\Models\Product::find($id);
+        return view('stocks/editstock',['data_stock' => $data_stock]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateqty(Request $request, $id)
+    {
+        //update detail product
+        DB::table('products')
+              ->where('product_id', $id)
+              ->update(['qty' => $request->qty]);
+        Mail::to("xxx@gmail.com")->send(new NotifMessageEmail($id,$request->qty));
         return 'berhasil';
     }
 }

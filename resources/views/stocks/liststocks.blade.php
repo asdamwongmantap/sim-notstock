@@ -32,20 +32,20 @@
                       </thead>
                       <tbody id="show_data">
                       @foreach($data_stock as $stock)
-					  @if ($stock->qty_available <= 2)
+					  @if ($stock->qty == $stock->min_qty)
 						<tr style="background-color:#fc032c;color:#ffffff;">
-                          <td><a href="/detailstock/{{$stock->id}}" style="color:#ffffff;">{{$stock->product_name}}</a></td>							
-                          <td>{{$stock->qty_available}}</td>
+                          <td><a href="/detailstock/{{$stock->product_id}}" style="color:#ffffff;">{{$stock->product_name}}</a></td>							
+                          <td>{{$stock->qty}}</td>
 						  <td>
-                            <a href="/editstock/{{$stock->id}}" class="btn btn-primary">Edit</a>
+                            <a href="/editstock/{{$stock->product_id}}" class="btn btn-primary">Edit</a>
                          </td>
                         </tr>
 					  @else
 						<tr style="background-color:#F7F7F7;color:#000000;">
-                          <td><a href="/detailstock/{{$stock->id}}">{{$stock->product_name}}</a></td>							
-                          <td>{{$stock->qty_available}}</td>
+                          <td><a href="/detailstock/{{$stock->product_id}}">{{$stock->product_name}}</a></td>							
+                          <td>{{$stock->qty}}</td>
 						  <td>
-                            <a href="/editstock/{{$stock->id}}" class="btn btn-primary">Edit</a>
+                            <a href="/editstock/{{$stock->product_id}}" class="btn btn-primary">Edit</a>
                          </td>
                         </tr>
 						@endif

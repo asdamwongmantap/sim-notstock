@@ -59,7 +59,18 @@
                     	<input type="text" class="form-control col-md-7 col-xs-12" id="product_desc" name="product_desc" aria-describedby="product_desc">
                     </div>
 				  </div>
-				  
+				  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qty">Qty </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    	<input type="text" class="form-control col-md-7 col-xs-12" id="qty" name="qty" aria-describedby="qty">
+                    </div>
+                  </div>
+				  <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="min_qty">Minimal Qty </label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    	<input type="text" class="form-control col-md-7 col-xs-12" id="min_qty" name="min_qty" aria-describedby="min_qty">
+                    </div>
+                  </div>
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="created_by" name="created_by" aria-describedby="created_by" value="{{auth()->user()->id}}">
                   <div class="form-group">
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="updated_by" name="updated_by" aria-describedby="updated_by" value="{{auth()->user()->id}}">

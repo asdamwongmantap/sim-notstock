@@ -34,8 +34,6 @@
                 <li><a href="/listcustomer"><i class="fa fa-user"></i> List Customer </a></li>
                 <h3>Logistik</h3>
                 <li><a href="/listproduct"><i class="fa fa-list"></i> List Barang </a></li>
-                <h3>Transaksi</h3>
-                <li><a href="/liststock"><i class="fa fa-cart-plus"></i> Manajemen Stock </a></li>
                 <h3>Report</h3>
                 <li><a href="/reportterima"><i class="fa fa-file-pdf-o"></i> Laporan Penerimaan </a></li>
                 <li><a href="/reportkeluar"><i class="fa fa-file-pdf-o"></i> Laporan Pengeluaran </a></li>
@@ -50,8 +48,6 @@
                 <li><a href="/listcustomer"><i class="fa fa-user"></i> List Customer </a></li>
                 <h3>Logistik</h3>
                 <li><a href="/listproduct"><i class="fa fa-list"></i> List Barang </a></li>
-                <h3>Transaksi</h3>
-                <li><a href="/liststock"><i class="fa fa-cart-plus"></i> Manajemen Stock </a></li>
                 <h3>Others</h3>
                 <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
               </ul>

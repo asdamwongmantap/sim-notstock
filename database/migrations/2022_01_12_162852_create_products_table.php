@@ -21,6 +21,8 @@ class CreateProductsTable extends Migration
             $table->string('product_desc');
             $table->float('product_weight');
             $table->bigInteger('product_price');
+            $table->integer('qty');
+            $table->integer('min_qty');
             $table->string('created_by');
             $table->timestamp('created_at');
             $table->string('updated_by');

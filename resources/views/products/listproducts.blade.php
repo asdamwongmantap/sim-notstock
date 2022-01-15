@@ -33,21 +33,40 @@
 						  <th>SKU</th>
 						  <th>Berat</th>
 						  <th>Harga</th>
+						  <th>Jumlah</th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody id="show_data">
                       @foreach($data_product as $product)
+					  @if ($product->qty <= $product->min_qty)
+					  <tr style="background-color:#fc032c;color:#ffffff;">
+                          <td><a href="/detailproduct/{{$product->product_id}}" style="color:#ffffff;">{{$product->product_name}}</a></td>							
+                          <td>{{$product->product_category}}</td>
+						  <td>{{$product->product_sku}}</td>
+						  <td>{{$product->product_weight}}</td>
+						  <td>{{$product->product_price}}</td>
+						  <td>{{$product->qty}}</td>
+                          <td>
+                            <a href="/deleteproduct/{{$product->product_id}}" class="btn btn-danger item_deleteproduct" data-id="{{$product->product_id}}">Delete</a>
+							<a href="/editqtyproduct/{{$product->product_id}}" class="btn btn-primary">Edit Stock</a>
+						</td>
+                        </tr>
+						@else
                       <tr style="background-color:#F7F7F7;color:#000000;">
                           <td><a href="/detailproduct/{{$product->product_id}}">{{$product->product_name}}</a></td>							
                           <td>{{$product->product_category}}</td>
 						  <td>{{$product->product_sku}}</td>
 						  <td>{{$product->product_weight}}</td>
 						  <td>{{$product->product_price}}</td>
+						  <td>{{$product->qty}}</td>
                           <td>
                             <a href="/editproduct/{{$product->product_id}}" class="btn btn-primary">Edit</a>
-                            <a href="/deleteproduct/{{$product->product_id}}" class="btn btn-danger item_deleteproduct" data-id="{{$product->product_id}}">Delete</a></td>
+                            <a href="/deleteproduct/{{$product->product_id}}" class="btn btn-danger item_deleteproduct" data-id="{{$product->product_id}}">Delete</a>
+							<a href="/editqtyproduct/{{$product->product_id}}" class="btn btn-primary">Edit Stock</a>
+						</td>
                         </tr>
+						@endif
                       @endforeach
                       </tbody>
                     </table>

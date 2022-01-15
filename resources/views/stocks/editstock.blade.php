@@ -25,14 +25,14 @@
                 <form id="form-editstock" data-parsley-validate class="form-horizontal form-label-left" method="post">
                     {{csrf_field()}}
 					<div class="form-group">
-                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qty_available">Qty </label>
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qty">Qty </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                    	<input type="text" class="form-control col-md-7 col-xs-12" id="qty_available" name="qty_available" aria-describedby="qty_available" value="{{$data_stock->qty_available}}">
+                    	<input type="text" class="form-control col-md-7 col-xs-12" id="qty" name="qty" aria-describedby="qty" value="{{$data_stock->qty}}">
                     </div>
                   </div>
 				  <div class="form-group">
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="updated_by" name="updated_by" aria-describedby="updated_by" value="{{auth()->user()->id}}">
-					<input type="hidden" class="form-control col-md-7 col-xs-12" id="id" name="id" aria-describedby="id" value="{{$data_stock->id}}">
+					<input type="hidden" class="form-control col-md-7 col-xs-12" id="product_id" name="product_id" aria-describedby="product_id" value="{{$data_stock->product_id}}">
                     <div class="form-group">
                     	<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                            <button type="submit" class="btn btn-primary" id="savebtn">Simpan</button>
@@ -56,7 +56,7 @@
         $('#form-editstock').on('submit',function(e) {
 			var form = $('#form-editstock')[0];
 			var data = new FormData(form);
-      var id = document.getElementById('id').value;
+      var id = document.getElementById('product_id').value;
 			swal({
 			  title: "Simpan Data",
 			  text: "Apakah anda ingin menyimpan data ini ?",
@@ -71,7 +71,7 @@
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:"{{url('/updatestock/')}}/"+id,
+					url:"{{url('/updateqtyproduct/')}}/"+id,
 					data: data,
 					processData: false,
 					contentType: false,
@@ -84,7 +84,7 @@
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='/liststock';
+							window.location='/listproduct';
 						  });
 						}
 						else{
