@@ -31,7 +31,7 @@ class NotifMessageEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('asdamgrimson@gmail.com')
+        return $this->from('yyyy@gmail.com')
                    ->view('messagebody')
                    ->with(
                     [

@@ -129,7 +129,7 @@ class ProductController extends Controller
         DB::table('products')
               ->where('product_id', $id)
               ->update(['qty' => $request->qty]);
-        Mail::to("as2605dam@gmail.com")->send(new NotifMessageEmail($id,$request->qty));
+        Mail::to("xxx@gmail.com")->send(new NotifMessageEmail($id,$request->qty));
         return 'berhasil';
     }
 }
