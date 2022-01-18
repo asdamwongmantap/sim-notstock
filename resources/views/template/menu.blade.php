@@ -31,11 +31,9 @@
                 <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
                 <h3>Master Data</h3>
                 <li><a href="/listuser"><i class="fa fa-users"></i> List Pengguna </a></li>
-                <li><a href="/listdistributor"><i class="fa fa-users"></i> List Distributor </a></li>
+                <li><a href="/listcustomer"><i class="fa fa-user"></i> List Customer </a></li>
                 <h3>Logistik</h3>
                 <li><a href="/listproduct"><i class="fa fa-list"></i> List Barang </a></li>
-                <h3>Transaksi</h3>
-                <li><a href="/liststock"><i class="fa fa-cart-plus"></i> Manajemen Stock </a></li>
                 <h3>Report</h3>
                 <li><a href="/reportterima"><i class="fa fa-file-pdf-o"></i> Laporan Penerimaan </a></li>
                 <li><a href="/reportkeluar"><i class="fa fa-file-pdf-o"></i> Laporan Pengeluaran </a></li>
@@ -46,10 +44,10 @@
               <ul class="nav side-menu">
                 <h3>General</h3>
                 <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
+                <h3>Master Data</h3>
+                <li><a href="/listcustomer"><i class="fa fa-user"></i> List Customer </a></li>
                 <h3>Logistik</h3>
                 <li><a href="/listproduct"><i class="fa fa-list"></i> List Barang </a></li>
-                <h3>Transaksi</h3>
-                <li><a href="/liststock"><i class="fa fa-cart-plus"></i> Manajemen Stock </a></li>
                 <h3>Others</h3>
                 <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
               </ul>

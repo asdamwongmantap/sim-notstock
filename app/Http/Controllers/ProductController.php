@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Mail\NotifMessageEmail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ProductController extends Controller
 {
@@ -42,7 +44,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //process add product
-        \App\Models\Product::create($request->all());
+        $lastID = \App\Models\Product::create($request->all());
         return 'berhasil';
     }
 
@@ -98,6 +100,36 @@ class ProductController extends Controller
         //delete product
         $product = \App\Models\Product::find($id);
         $product->delete();
+        return 'berhasil';
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editqty($id)
+    {
+        //get edit product
+        $data_stock = \App\Models\Product::find($id);
+        return view('stocks/editstock',['data_stock' => $data_stock]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateqty(Request $request, $id)
+    {
+        //update detail product
+        DB::table('products')
+              ->where('product_id', $id)
+              ->update(['qty' => $request->qty]);
+        Mail::to("xxx@gmail.com")->send(new NotifMessageEmail($id,$request->qty));
         return 'berhasil';
     }
 }

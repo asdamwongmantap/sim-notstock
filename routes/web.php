@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StockController;
+use App\Models\Customer;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,8 @@ use App\Http\Controllers\ProductController;
 Route::get('/',[LoginController::class,'index']);
 Route::post('/ceklogin',[LoginController::class,'ceklogin']);
 Route::post('/saveproduct',[ProductController::class,'store']);
+Route::post('/savestock',[StockController::class,'store']);
+Route::get('/logout',[LoginController::class,'logout']);
 Route::group(['middleware' => 'auth'],function(){
     Route::get('/dashboard',[MainController::class,'index']);
     //product
@@ -28,4 +33,9 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/updateproduct/{id}',[ProductController::class,'update']);
     Route::get('/deleteproduct/{id}',[ProductController::class,'destroy']);
     Route::get('/detailproduct/{id}',[ProductController::class,'show']);
+    Route::get('/editqtyproduct/{id}',[ProductController::class,'editqty']);
+    Route::post('/updateqtyproduct/{id}',[ProductController::class,'updateqty']);
+    //customer
+    Route::get('/listcustomer',[CustomerController::class,'index']);
+    Route::get('/detailcustomer/{id}',[CustomerController::class,'show']);
 });
