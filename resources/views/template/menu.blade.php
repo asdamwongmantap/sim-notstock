@@ -25,7 +25,7 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-              @if (auth()->user()->level == '1')
+              @if (auth()->user()->level == 'admin')
               <ul class="nav side-menu">
                 <h3>General</h3>
                 <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
@@ -35,8 +35,7 @@
                 <h3>Logistik</h3>
                 <li><a href="/listproduct"><i class="fa fa-list"></i> List Barang </a></li>
                 <h3>Report</h3>
-                <li><a href="/reportterima"><i class="fa fa-file-pdf-o"></i> Laporan Penerimaan </a></li>
-                <li><a href="/reportkeluar"><i class="fa fa-file-pdf-o"></i> Laporan Pengeluaran </a></li>
+                <li><a href="/reportstock"><i class="fa fa-file-pdf-o"></i> Laporan Stock </a></li>
                 <h3>Others</h3>
                 <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
               </ul>
@@ -48,6 +47,8 @@
                 <li><a href="/listcustomer"><i class="fa fa-user"></i> List Customer </a></li>
                 <h3>Logistik</h3>
                 <li><a href="/listproduct"><i class="fa fa-list"></i> List Barang </a></li>
+                <h3>Report</h3>
+                <li><a href="/reportstock"><i class="fa fa-file-pdf-o"></i> Laporan Stock </a></li>
                 <h3>Others</h3>
                 <li><a href="/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
               </ul>
