@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Reportcontroller;
 use App\Http\Controllers\StockController;
+use App\Http\Controllers\UserController;
 use App\Models\Customer;
 
 /*
@@ -23,6 +25,7 @@ Route::get('/',[LoginController::class,'index']);
 Route::post('/ceklogin',[LoginController::class,'ceklogin']);
 Route::post('/saveproduct',[ProductController::class,'store']);
 Route::post('/savestock',[StockController::class,'store']);
+Route::post('/saveuser',[UserController::class,'store']);
 Route::get('/logout',[LoginController::class,'logout']);
 Route::group(['middleware' => 'auth'],function(){
     Route::get('/dashboard',[MainController::class,'index']);
@@ -38,4 +41,13 @@ Route::group(['middleware' => 'auth'],function(){
     //customer
     Route::get('/listcustomer',[CustomerController::class,'index']);
     Route::get('/detailcustomer/{id}',[CustomerController::class,'show']);
+    // user module
+    Route::get('/listuser',[UserController::class,'index']);
+    Route::get('/adduser',[UserController::class,'create']);
+    Route::get('/edituser/{id}',[UserController::class,'edit']);
+    Route::post('/updateuser/{id}',[UserController::class,'update']);
+    Route::get('/deleteuser/{id}',[UserController::class,'destroy']);
+    //report
+    Route::get('/reportstock',[ReportController::class,'index']);
+    Route::post('/pdfstock',[ReportController::class,'show']);
 });
