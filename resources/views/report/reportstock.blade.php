@@ -50,7 +50,7 @@
     <table style="border-style:none">
         <tr style="width:100%;">
             <td style="width:5%;border-style:none">
-            <img src="{{ public_path('assets/images/logoawr.png')}}" style="height:50px;width:50px;">
+            <img src="{{ public_path('assets/images/logoawr.jpg')}}" style="height:50px;width:50px;">
             </td>
             <td style="width:95%;border-style:none">
                 <h2><center>LAPORAN STOCK PER PERIODE</center></h2>
