@@ -9,6 +9,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Twilio\Rest\Client;
 
 class ProductController extends Controller
 {
@@ -129,7 +130,36 @@ class ProductController extends Controller
         DB::table('products')
               ->where('product_id', $id)
               ->update(['qty' => $request->qty]);
-        Mail::to("xxx@gmail.com")->send(new NotifMessageEmail($id,$request->qty));
+        
+        //send email if qty less equal 2
+        if ($request->qty <= 2){
+            $user_data = DB::table('users')
+              ->where('level', 'staff')
+              ->get();
+        // $receivers = ['2111600827@student.budiluhur.ac.id','2111600454@student.budiluhur.ac.id','2111600470@student.budiluhur.ac.id','2111600447@student.budiluhur.ac.id'];
+        $receivers = [];
+        foreach ($user_data as $user){
+            array_push($receivers,$user->email);
+            $this->whatsappNotification($user->phone_no,$request->product_sku,$request->qty);
+        }
+        Mail::to($receivers)->send(new NotifMessageEmail($request->product_sku,$request->qty)); 
+        }
+        
         return 'berhasil';
+    }
+    private function whatsappNotification(string $recipient, string $sku, int $qty)
+    {
+        $sid    = getenv("TWILIO_AUTH_SID");
+        $token  = getenv("TWILIO_AUTH_TOKEN");
+        $wa_from= getenv("TWILIO_WHATSAPP_FROM");
+        $twilio = new Client($sid, $token);
+        
+        $body = "[This is a stock condition notification]\n
+        Unfortunately, the following products with the sku {{$sku}} will now be out of stock with qty {{$qty}}.\n
+        Please do a restock for the product so that it can be purchased by the customer\n
+        Thank you\n";
+
+        return $twilio->messages
+        ->create("whatsapp:$recipient",["from" => "whatsapp:$wa_from", "body" => $body]);
     }
 }

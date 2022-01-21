@@ -33,6 +33,7 @@
 				  <div class="form-group">
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="updated_by" name="updated_by" aria-describedby="updated_by" value="{{auth()->user()->id}}">
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="product_id" name="product_id" aria-describedby="product_id" value="{{$data_stock->product_id}}">
+					<input type="hidden" class="form-control col-md-7 col-xs-12" id="product_sku" name="product_sku" aria-describedby="product_sku" value="{{$data_stock->product_sku}}">
                     <div class="form-group">
                     	<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                            <button type="submit" class="btn btn-primary" id="savebtn">Simpan</button>
