@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
                 'name' => Str::random(10),
                 'email' => Str::random(10).'@gmail.com',
                 'password' => bcrypt('admin'),
+                'phone_no' => '081336448870',
                 'level' => $level,
             ]);
         }
