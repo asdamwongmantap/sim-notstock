@@ -13,6 +13,11 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('products')->insert([
+            'product_name' => 'Anya Shoe Rack',
+            'product_category' => 'Shoe Rack',
+            'product_sku' => 'ASR001',
+            'min_qty' => 2,
+        ]);
     }
 }
