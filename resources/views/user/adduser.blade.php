@@ -46,6 +46,13 @@
                                 </div>
                               </div>
 							  <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone_no">No. HP 
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="phone_no" class="form-control col-md-7 col-xs-12" id="phone_no" name="phone_no" aria-describedby="phone_no">
+                                </div>
+                              </div>
+							  <div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="level">Level </label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 						<select id="level" name="level" class="form-control col-md-7 col-xs-12">
