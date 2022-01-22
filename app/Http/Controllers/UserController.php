@@ -40,8 +40,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //process add user
+        $phone_no = Str::replaceFirst('0','62',$request->phone_no);
         DB::table('users')->insert(
-            ['name' => $request->name, 'email' => $request->email,'password' => bcrypt($request->password),'remember_token' => Str::random(60),'level' => $request->level,'phone_no' => $request->phone_no]
+            ['name' => $request->name, 'email' => $request->email,'password' => bcrypt($request->password),'remember_token' => Str::random(60),'level' => $request->level,'phone_no' => $phone_no]
         );
         return 'berhasil';
     }
@@ -82,8 +83,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //update detail product
-        $data_user = \App\Models\User::find($id);
-        $data_user->update($request->all());
+        $phone_no = Str::replaceFirst('0','62',$request->phone_no);
+        DB::table('users')
+        ->where('id', $id)
+        ->update(
+            ['name' => $request->name, 'email' => $request->email,'level' => $request->level,'phone_no' => $phone_no]
+        );
         return 'berhasil';
     }
 

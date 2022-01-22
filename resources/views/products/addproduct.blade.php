@@ -38,7 +38,7 @@
 				  <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_weight">Berat </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                    	<input type="text" class="form-control col-md-7 col-xs-12" id="product_weight" name="product_weight" aria-describedby="product_weight">
+                    	<input type="number" step="any" class="form-control col-md-7 col-xs-12" id="product_weight" name="product_weight" aria-describedby="product_weight">
                     </div>
                   </div>
 				  <div class="form-group">
@@ -50,7 +50,7 @@
 				  <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="product_price">Harga </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                    	<input type="text" class="form-control col-md-7 col-xs-12" id="product_price" name="product_price" aria-describedby="product_price">
+                    	<input type="number" class="form-control col-md-7 col-xs-12" id="product_price" name="product_price" aria-describedby="product_price">
                     </div>
                   </div>
 				  <div class="form-group">
@@ -62,13 +62,13 @@
 				  <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qty">Qty </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                    	<input type="text" class="form-control col-md-7 col-xs-12" id="qty" name="qty" aria-describedby="qty">
+                    	<input type="number" class="form-control col-md-7 col-xs-12" id="qty" name="qty" aria-describedby="qty">
                     </div>
                   </div>
 				  <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="min_qty">Minimal Qty </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                    	<input type="text" class="form-control col-md-7 col-xs-12" id="min_qty" name="min_qty" aria-describedby="min_qty">
+                    	<input type="number" class="form-control col-md-7 col-xs-12" id="min_qty" name="min_qty" aria-describedby="min_qty">
                     </div>
                   </div>
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="created_by" name="created_by" aria-describedby="created_by" value="{{auth()->user()->id}}">
