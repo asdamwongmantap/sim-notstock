@@ -22,6 +22,7 @@ use App\Models\Customer;
 */
 
 Route::get('/',[LoginController::class,'index']);
+Route::get('/login',[LoginController::class,'index'])->name('login');
 Route::post('/ceklogin',[LoginController::class,'ceklogin']);
 Route::post('/saveproduct',[ProductController::class,'store']);
 Route::post('/savestock',[StockController::class,'store']);
