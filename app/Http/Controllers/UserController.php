@@ -41,7 +41,7 @@ class UserController extends Controller
     {
         //process add user
         DB::table('users')->insert(
-            ['name' => $request->name, 'email' => $request->email,'password' => bcrypt($request->password),'remember_token' => Str::random(60),'level' => $request->level]
+            ['name' => $request->name, 'email' => $request->email,'password' => bcrypt($request->password),'remember_token' => Str::random(60),'level' => $request->level,'phone_no' => $request->phone_no]
         );
         return 'berhasil';
     }

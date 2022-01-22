@@ -40,6 +40,7 @@
                                 </div>
 							  </div>
 							  
+							  
 							  <div class="form-group">
 						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="level">Level </label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
@@ -51,6 +52,13 @@
 						
 						</div>
 					</div>
+					<div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone_no">No. HP 
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-10">
+                    <input type="text" class="form-control col-md-7 col-xs-10" id="phone_no" name="phone_no" aria-describedby="phone_no" value="{{$user->phone_no}}">
+                                </div>
+							  </div>
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="created_by" name="created_by" aria-describedby="created_by" value="{{$user->created_by}}">
 					<input type="hidden" class="form-control col-md-7 col-xs-12" id="userid" name="userid" aria-describedby="userid" value="{{$user->id}}">
                     <div class="form-group">
@@ -108,7 +116,7 @@
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='/siskargo/listuser';
+							window.location='/listuser';
 						  });
 						}
 						else{
